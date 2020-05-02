@@ -3,3 +3,4 @@ virtual/
 __pychache__/
 .gitignore
 start.sh
+.vscode

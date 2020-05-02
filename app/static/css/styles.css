@@ -1,0 +1,14 @@
+.bg-dark-blue{
+    background-color: #050102;
+}
+body{
+    background-color: #050102fa;
+    color: rgba(255, 255, 255, 0.8);
+}
+.shadow-white{
+    box-shadow:0 .5rem 1rem rgba(66, 0, 20, 0.9);
+}
+.navbar *{
+    color: #007bff !important;
+    font-weight: 800;
+}

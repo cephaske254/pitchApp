@@ -1,0 +1,18 @@
+{% extends 'bootstrap/base.html' %}
+
+<!-- Styles Here -->
+{% block styles %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+{% endblock %}
+
+<!-- Content Here -->
+{% block navbar %}
+{% include 'navbar.html' %}
+{% endblock %}
+
+<!-- Scripts here -->
+{% block scripts %}
+<script src="{{url_for('static', filename='js/jquery-3.4.1.min.js')}}"></script>
+<script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+{% endblock %}
