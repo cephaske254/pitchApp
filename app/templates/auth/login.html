@@ -8,7 +8,8 @@
             <div class="container border h-100 rounded-bottom">
                 <h1 class="text-center text-uppercase log-reg-head p-2">SIGN IN </h1>
                 <hr>
-                <form action="#" class="form-horizontal">
+                {{errors.flashed(get_flashed_messages())}}
+                <form  action="" method="post" role="form" class="form-horizontal">
                     {{ form.csrf_token }}
                     <div class="form-group">
                         {{form.username.label}}

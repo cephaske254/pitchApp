@@ -5,3 +5,12 @@
         {% endfor %}
     {% endif %}
 {% endmacro %}
+
+{% macro flashed(messages) %}
+    {% for message in messages %}
+    <div class="alert alert-danger w-100 position-absolute">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+{% endmacro %}
