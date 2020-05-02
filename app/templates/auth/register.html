@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% import 'errors.html' as errors %}
 {% block content %}
 <div class="container">
     <div class="login-row row py-3">
@@ -10,18 +10,22 @@
             <div class="container border h-100 rounded-bottom">
                 <h1 class="text-center text-uppercase log-reg-head p-2">SIGN UP </h1>
                 <hr>
-                <form action="#" class="form-horizontal">
+                <form action="" method="post" role="form" class="form-horizontal">
+                    {{ form.csrf_token }}
                     <div class="form-group">
                         {{form.email.label}}
                         {{form.email(class='w-100 p-2',placeholder='Enter your email',type='email')}}
+                        {{ errors.reg_errors(form.email.errors) }}
                     </div>
                     <div class="form-group">
                         {{form.username.label}}
                         {{form.username(class='w-100 p-2',placeholder='Enter your email')}}
+                        {{ errors.reg_errors(form.username.errors) }}
                     </div>
                     <div class="form-group">
                         {{form.password.label}}
                         {{form.password(class='w-100 p-2',placeholder='Enter your password')}}
+                        {{ errors.reg_errors(form.password.errors) }}
                     </div>
                     <div class="form-group">
                         {{form.confirm_password.label}}
@@ -32,7 +36,7 @@
                         {{form.agree}}
                     </div>
                     <div class="btn-group">
-                        <button class="btn btn-sm btn-outline-primary">SIGN UP</button>
+                        {{form.submit(class='btn btn-sm btn-outline-primary')}}
                         <a href="{{url_for('auth.login')}}" class="btn btn-sm btn-primary">SIGN IN</a>
                     </div>
                 </form>

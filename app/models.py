@@ -8,6 +8,7 @@ def load_user(user_id):
     return User.query(int(user_id))
 
 class User(UserMixin,db.Model):
+    __tablename__='users'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(255), index=True, unique=True)
     email = db.Column(db.String(255), index=True, unique=True)
@@ -15,10 +16,14 @@ class User(UserMixin,db.Model):
 
     @property
     def password(self):
-        raise AttributeError('Password Cannot Be Read!')
+        raise AttributeError('You cannnot read the password attribute')
 
     @password.setter
-    def password(self,password):
-        generate_password_hash(passw0pord)
+    def password(self, password):
+        self.password_hash = generate_password_hash(password)
+
     def verify_password(self,password):
         return check_password_hash(self.password_hash,password)
+        
+    def __repr__(self):
+        return f'User - {self.username}'

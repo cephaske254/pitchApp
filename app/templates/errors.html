@@ -1,0 +1,7 @@
+{% macro reg_errors(errors) %}
+    {%if errors %}
+        {% for error in errors %}
+            <p class="text-danger position-absolute">{{error}}</p>
+        {% endfor %}
+    {% endif %}
+{% endmacro %}
