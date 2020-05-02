@@ -8,32 +8,36 @@
         </div>
         <div class="col-md-4 col-sm-10">
             <div class="container border h-100 rounded-bottom">
-                <h1 class="text-center text-uppercase log-reg-head p-4">Login </h1><hr>
+                <h1 class="text-center text-uppercase log-reg-head p-2">SIGN UP </h1>
+                <hr>
                 <form action="#" class="form-horizontal">
                     <div class="form-group">
-                        <label for="">Email</label>
-                        <input type="email" class="w-100 p-2" placeholder="Enter Email">
+                        {{form.email.label}}
+                        {{form.email(class='w-100 p-2',placeholder='Enter your email',type='email')}}
                     </div>
                     <div class="form-group">
-                        <label for="">Username</label>
-                        <input type="text" class="w-100 p-2" placeholder="Enter Username">
+                        {{form.username.label}}
+                        {{form.username(class='w-100 p-2',placeholder='Enter your email')}}
                     </div>
                     <div class="form-group">
-                        <label for="">Password</label>
-                        <input type="password" class="w-100 p-2" placeholder="Enter Password">
+                        {{form.password.label}}
+                        {{form.password(class='w-100 p-2',placeholder='Enter your password')}}
                     </div>
                     <div class="form-group">
-                        <label for="">Confirm Password</label>
-                        <input type="password" class="w-100 p-2" placeholder="Confirm Password">
+                        {{form.confirm_password.label}}
+                        {{form.confirm_password(class='w-100 p-2',placeholder='Confirm password')}}
+                    </div>
+                    <div class="check-box">
+                        {{form.agree.label}}
+                        {{form.agree}}
                     </div>
                     <div class="btn-group">
                         <button class="btn btn-sm btn-outline-primary">SIGN UP</button>
-                        <a href="#" class="btn btn-sm btn-primary">SIGN IN</a>
+                        <a href="{{url_for('auth.login')}}" class="btn btn-sm btn-primary">SIGN IN</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-</div>
 </div>
 {% endblock %}

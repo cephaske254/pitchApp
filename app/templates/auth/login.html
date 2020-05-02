@@ -7,7 +7,7 @@
         </div>
         <div class="col-md-4 col-sm-10">
             <div class="container border h-100 rounded-bottom">
-                <h1 class="text-center text-uppercase log-reg-head p-4">Login </h1>
+                <h1 class="text-center text-uppercase log-reg-head p-2">SIGN IN </h1>
                 <hr>
                 <form action="#" class="form-horizontal">
                     {{ form.csrf_token }}
@@ -21,7 +21,7 @@
                     </div>
                     <div class="btn-group">
                         {{form.submit(class='btn btn-sm btn-primary')}}
-                        <a href="#" class="btn btn-sm btn-outline-primary">SIGN UP</a>
+                        <a href="{{url_for('auth.register')}}" class="btn btn-sm btn-outline-primary">SIGN UP</a>
                     </div>
                     <hr>
                     <a href="#" class="nav-link">Forgot password?</a>
