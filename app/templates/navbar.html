@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark bg-dark-blue navbar-expand-lg sticky-top shadow-white">
+<nav class="navbar navbar-light bg-light navbar-expand-lg sticky-top shadow">
     <button class="navbar-toggler" data-toggle="collapse" data-target="#mobiNavigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -15,7 +15,7 @@
     </ul>
     <ul class="nav d-flex justify-content-end flex-fill">
         <li class="nav-item border-primary border rounded">
-            <a href="#" class="nav-link">LOGIN</a>
+            <a href="{{url_for('auth.login')}}" class="nav-link">LOGIN</a>
         </li>
     </ul>
 </nav>

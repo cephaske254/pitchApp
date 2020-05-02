@@ -1,14 +1,16 @@
-.bg-dark-blue{
-    background-color: #050102;
+@font-face{
+    font-family: 'BerkshireSwash-Regular';
+    src: url('/static/fonts/BerkshireSwash-Regular.ttf');
 }
-body{
-    background-color: #050102fa;
-    color: rgba(255, 255, 255, 0.8);
+
+.login-row{
+    min-height: 90vh;
 }
-.shadow-white{
-    box-shadow:0 .5rem 1rem rgba(66, 0, 20, 0.9);
+.left-login-col{
+    background: url('/static/images/developer.jpg');
+    background-size: cover;
+    background-position: center;
 }
-.navbar *{
-    color: #007bff !important;
-    font-weight: 800;
+.log-reg-head{
+    font-family: 'BerkshireSwash-Regular';
 }
