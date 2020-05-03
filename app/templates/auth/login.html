@@ -21,6 +21,10 @@
                         {{form.password(class='w-100 p-2',placeholder='Enter password...')}}
                         {{errors.reg_errors(form.password.errors)}}
                     </div>
+                    <div class="check-box">
+                        {{form.remember.label}}
+                        {{form.remember}}
+                    </div>
                     <div class="btn-group">
                         {{form.submit(class='btn btn-sm btn-primary')}}
                         <a href="{{url_for('auth.register')}}" class="btn btn-sm btn-outline-primary">SIGN UP</a>

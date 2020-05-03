@@ -7,15 +7,21 @@
             <a href="/" class="nav-link">HOME</a>
         </li>
         <li class="nav-item">
-            <a href="/" class="nav-link">PROFILE</a>
-        </li>
-        <li class="nav-item">
             <a href="/" class="nav-link">LINK3</a>
         </li>
     </ul>
     <ul class="nav d-flex justify-content-end flex-fill">
+    {% if current_user.is_authenticated %}
+        <li class="nav-item">
+            <a href="#" class="nav-link border-primary border rounded">Profile</a>
+        </li>
+        <li class="nav-item">
+            <a href="{{url_for('auth.logout')}}" class="nav-link text-danger rounded">Logout</a>
+        </li>
+    {% else %}
         <li class="nav-item border-primary border rounded">
             <a href="{{url_for('auth.login')}}" class="nav-link">LOGIN</a>
         </li>
+    {% endif %}
     </ul>
 </nav>
