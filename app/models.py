@@ -34,7 +34,7 @@ class Pitch(db.Model):
     user_id = db.Column(db.Integer,db.ForeighnKey('users.id'))
     title = db.Column(db.string(255))
     content = db.Column(db.string())
-    category = db.Column(db.string())
+    category_id = db.Column(db.Integer(), ForeighnKey('categories.id'))
     published = db.Column(db.Integer())
 
 class Categoy:
