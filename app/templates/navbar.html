@@ -2,26 +2,47 @@
     <button class="navbar-toggler" data-toggle="collapse" data-target="#mobiNavigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <ul class="collapse navbar-collapse navbar-nav" id="mobiNavigation">
-        <li class="nav-item">
-            <a href="/" class="nav-link">HOME</a>
-        </li>
-        <li class="nav-item">
-            <a href="/" class="nav-link">LINK3</a>
-        </li>
-    </ul>
+    <div class="navbar-collapse collapse" id="mobiNavigation">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    HOME
+                </a>
+            </li>
+            {% if current_user.is_authenticated %}
+            <li class="nav-item">
+                <a href="/" class="nav-link">
+                    <i class="fas fa-sticky-note"></i>
+                    ADD POST
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/" class="nav-link">
+                    <i class="fas fa-plus-circle"></i>
+                    CATEGORIES
+                </a>
+            </li>
+            {% endif %}
+            <li class="nav-item">
+                <a href="/" class="nav-link">LINK3</a>
+            </li>
+        </ul>
+    </div>
+
     <ul class="nav d-flex justify-content-end flex-fill">
-    {% if current_user.is_authenticated %}
+        {% if current_user.is_authenticated %}
         <li class="nav-item">
-            <a href="#" class="nav-link border-primary border rounded">Profile</a>
+            <a href="#" class="nav-link border-primary border rounded"> <i class="fas fa-user"></i> Profile</a>
+
         </li>
         <li class="nav-item">
-            <a href="{{url_for('auth.logout')}}" class="nav-link text-danger rounded">Logout</a>
+            <a href="{{url_for('auth.logout')}}" class="nav-link text-danger rounded"><i class="fas fa-angle-right"></i> Logout</a>
         </li>
-    {% else %}
+        {% else %}
         <li class="nav-item border-primary border rounded">
             <a href="{{url_for('auth.login')}}" class="nav-link">LOGIN</a>
         </li>
-    {% endif %}
+        {% endif %}
     </ul>
 </nav>

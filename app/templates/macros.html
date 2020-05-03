@@ -3,6 +3,7 @@
     <div class="card-title border-bottom">
         <img src="{{url_for('static',filename='images/profiles/avatar.png')}}" class="avatar img-thumbnail">
         <span class="font-weight-bold">@Cephas Too</span>
+        <span class="float-right small">Thu 2019</span>
     </div>
     <div class="card-body text-center">
         <div class="card-subtitle h5">TITLE</div>
@@ -25,7 +26,9 @@
                 <span class="badge badge-light">4</span>
             </button>
         </div>
-        <div class="rounded border mt-1">No comments...</div>
+        <div class="rounded border-bottom mt-1">
+            <span class="font-weight-bold">@cephas_ke</span> This is nice...
+        </div>
     </div>
 </div>
 {% endmacro %}

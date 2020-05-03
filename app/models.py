@@ -27,3 +27,10 @@ class User(UserMixin,db.Model):
         
     def __repr__(self):
         return f'User - {self.username}'
+
+class Pitch(db.Model):
+    __tablename__ = 'pitches'
+    id = db.Column(db.Integer, primary_key=True,serial=True)
+    user_id = db.Column(db.Integer,db.ForeighnKey('users.id'))
+    title = db.Column(db.string(255))
+    content = db.Column(db.string())

@@ -2,7 +2,6 @@
     font-family: 'BerkshireSwash-Regular';
     src: url('/static/fonts/BerkshireSwash-Regular.ttf');
 }
-
 .login-row{
     min-height: 90vh;
 }
