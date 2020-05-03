@@ -1,28 +1,11 @@
 {% extends 'base.html' %}
+{% import 'macros.html' as macro %}
 {% block content %}
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-3 border d-sm-none d-md-flex">A</div>
         <div class="col-md-5 col-sm-8">
-            <div class="card bg-default pitch-card">
-                <div class="card-title border-bottom">
-                    <img src="{{url_for('static',filename='images/profiles/avatar.png')}}" class="avatar img-thumbnail">
-                </div>
-                <div class="card-body text-center">
-                    <div class="card-subtitle h4">TITLE</div>
-                    <div class="card-text text-left">
-                        Content Here
-                    </div>
-                </div>
-                <div class="card-footer small font-italic py-1">
-                    <div class="btn-group align-self-start">
-                        <button class="btn btn-sm btn-success">Like</button>
-                        <button class="btn btn-sm btn-danger">Dislike</button>
-                        <button class="btn btn-sm btn-primary">Comment</button>
-                    </div>
-                    <div class="rounded border">asd</div>
-                </div>
-            </div>
+            {{macro.display_pitches(all)}}
         </div>
         <div class="col-md-3 border d-sm-none d-md-flex">C</div>
     </div>

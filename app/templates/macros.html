@@ -1,0 +1,31 @@
+{% macro display_pitches(pithches) %}
+<div class="card bg-default pitch-card my-2">
+    <div class="card-title border-bottom">
+        <img src="{{url_for('static',filename='images/profiles/avatar.png')}}" class="avatar img-thumbnail">
+        <span class="font-weight-bold">@Cephas Too</span>
+    </div>
+    <div class="card-body text-center">
+        <div class="card-subtitle h5">TITLE</div>
+        <div class="card-text text-left">
+            Content Here
+        </div>
+    </div>
+    <div class="card-footer small font-italic py-1">
+        <div class="btn-group align-self-start">
+            <button class="btn btn-sm btn-outline-success">
+                <i class="fas fa-thumbs-up"></i>
+                <span class="badge badge-light">4</span>
+            </button>
+            <button class="btn btn-sm btn-outline-danger">
+                <i class="fas fa-thumbs-down"></i>
+                <span class="badge badge-light">4</span>
+            </button>
+            <button class="btn btn-sm btn-outline-primary">
+                <i class="fas fa-comment"></i>
+                <span class="badge badge-light">4</span>
+            </button>
+        </div>
+        <div class="rounded border mt-1">No comments...</div>
+    </div>
+</div>
+{% endmacro %}
