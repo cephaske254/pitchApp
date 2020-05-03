@@ -34,3 +34,10 @@ class Pitch(db.Model):
     user_id = db.Column(db.Integer,db.ForeighnKey('users.id'))
     title = db.Column(db.string(255))
     content = db.Column(db.string())
+    category = db.Column(db.string())
+    published = db.Column(db.Integer())
+
+class Categoy:
+    __tablename__ = 'categories'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255))
