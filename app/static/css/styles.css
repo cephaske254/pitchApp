@@ -14,3 +14,18 @@
 .log-reg-head{
     font-family: 'BerkshireSwash-Regular';
 }
+img.avatar{
+    width: 50px;
+}
+.pitch-card .card-body{
+    background-position: center;
+    background-size: cover;
+    color: red;
+}
+
+.pitch-card .card-footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
