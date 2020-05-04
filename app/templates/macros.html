@@ -1,4 +1,4 @@
-{% macro display_pitches(pithches) %}
+{% macro display_pitches(pitches) %}
 <div class="card bg-default pitch-card my-2">
     <div class="card-title border-bottom">
         <img src="{{url_for('static',filename='images/profiles/avatar.png')}}" class="avatar img-thumbnail">
@@ -31,4 +31,29 @@
         </div>
     </div>
 </div>
+{% endmacro %}
+
+{% macro select_tags_options(tags)%}
+{% for tag in tags %}
+<option value="{{tag.id}}">{{tag.name}}</option>
+{% endfor %}
+{% endmacro %}
+
+{% macro tag_cards(tag_list) %}
+{% for tag in tag_list %}
+<div class="col-lg-3 col-md-4 col-sm-6 p-2">
+    <div class="card my-1">
+        <div class="card-body">
+            <a href="tags/{{tag.tag}}" class="card-link">
+                <div class="card-title text-capitalize h3">
+                    {{tag.name}}
+                </div>
+                <div class="card-subtitle small text-primary font-italic">
+                    #{{tag.tag}}
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+{% endfor %}
 {% endmacro %}

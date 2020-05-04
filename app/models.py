@@ -13,6 +13,7 @@ class User(UserMixin,db.Model):
     username = db.Column(db.String(255), index=True, unique=True)
     email = db.Column(db.String(255), index=True, unique=True)
     password_hash = db.Column(db.String())
+    pitches = db.relationship('Pitch',backref = 'user')
 
     @property
     def password(self):
@@ -33,6 +34,12 @@ class Tags(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255))
     tag = db.Column(db.String(255))
+
+    @classmethod
+    def get_tags(cls):
+        tags = Tags.query.all()
+        return tags
+    
     
 class Pitch(db.Model):
     __tablename__ = 'pitches'
@@ -40,5 +47,5 @@ class Pitch(db.Model):
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
     title = db.Column(db.String(255))
     content = db.Column(db.String())
-    tag_id = db.Column(db.Integer,db.ForeignKey('tags.id'))
-    published = db.Column(db.Integer())
+    tag_id = db.Column(db.Integer)
+    published = db.Column(db.String())

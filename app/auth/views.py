@@ -44,3 +44,4 @@ def logout():
     logout_user()
     flash('Youve been logged out!')
     return redirect(url_for('main.index'))
+

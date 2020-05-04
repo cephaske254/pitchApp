@@ -1,31 +1,30 @@
 {% extends 'base.html' %}
+{% import 'macros.html' as macro %}
 {% block content %}
+
+{% if tag_name==None %}
 <div class="container">
-    <h2 class="text-center">All Tags</h2> <button class="btn btn-sm btn-success">Add <i class="fas fa-plus-circle"></i> </button>
+    {% if current_user %}
+    <form action="" method='POST' class="row justify-content-center p-1 form-inline">
+        {{form.name(class="form-control form-control-sm", placeholder="Add tag")}}
+        {{form.csrf_token}}
+        <button class="btn mx-1 btn-sm btn-outline-primary add-tag-btn">Add
+            <i class="fas fa-plus-circle"></i>
+        </button>
+    </form>
+    {% endif %}
+    <h3>All Tags</h3>
     <hr>
-    <div class="container bg-light position-absolute">
-        <div class="row justify-content-center">
-            <div class="col-md-6 alert border w-100 rounded alert-default alert-dismissable">
-                <button class="close" data-target="alert">&times;</i></button>
-                <form action="" method="POST">
-                    <h3>Add Tag</h3> <i class="fas fa-tag"></i>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="row align-items-center" hidden>
-        <div class="col-lg-3 col-md-4 col-sm-6 p-2">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-title h3">
-                        Name Here
-                    </div>
-                    <div class="card-subtitle small text-primary font-italic">
-                        #subtitle
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="row align-items-center">
+        {{macro.tag_cards(tag_list)}}
     </div>
 </div>
+
+{% else %}
+<div class="container">
+    <h3>#{{tag_name}}</h3>
+    <hr>
+</div>
+{% endif %}
+
 {% endblock %}

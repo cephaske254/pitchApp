@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro%}
+{% block content %}
+<div class="alert alert-danger alert-dismissable">
+    <button class="close" data-dismiss="alert">&times;</button>
+    {% for message in flashed_messages %}
+        {{message}}
+    {% endfor %}
+</div>
+<div class="container">
+    <div class="row justify-content-center">
+        <form action="" method="POST" class="form-horizontal col-md-6">
+            <h3>New Pitch</h3>
+            <div class="form-group">
+                {{ form.csrf_token }}
+                {{form.title.label}}
+                {{form.title(class='w-100 form-control',placeholder='Pitch Title')}}
+            </div>
+            <div class="form-group">
+                {{form.tag.label}}
+                <select class="w-100 form-control" id="tag" name="tag">
+                    {{macro.select_tags_options(tag_list)}}
+                </select>
+            </div>
+            <div class="form-group">
+                {{form.content.label}}
+                {{form.content(class='w-100',placeholder='Pitch Content')}}
+                {{ simplemde.load }}
+            </div>
+            <div class="check-box">
+                {{form.publish.label}}
+                {{form.publish(checked='true')}}
+            </div>
+            <div class="form-group">
+                {{form.submit(class='btn btn-success btn-sm')}}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

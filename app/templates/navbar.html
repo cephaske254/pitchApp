@@ -10,9 +10,15 @@
                     HOME
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="/tags" class="nav-link">
+                    <i class="fas fa-tag"></i>
+                    TAGS
+                </a>
+            </li>
             {% if current_user.is_authenticated %}
             <li class="nav-item">
-                <a href="/" class="nav-link">
+                <a href="{{url_for('main.new_pitch')}}" class="nav-link">
                     <i class="fas fa-sticky-note"></i>
                     ADD POST
                 </a>
@@ -22,6 +28,9 @@
                     <i class="fas fa-plus-circle"></i>
                     CATEGORIES
                 </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{url_for('main.new_pitch')}}" class="nav-link"></a>
             </li>
             {% endif %}
             <li class="nav-item">
