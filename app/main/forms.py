@@ -14,4 +14,7 @@ class PitchForm(FlaskForm):
     content = TextAreaField('Content')
     publish = BooleanField('Publish Now')
     submit = SubmitField('Add')
+
+class CommentForm(FlaskForm):
+    content = StringField()
     

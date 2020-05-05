@@ -4,7 +4,7 @@
 
 {% if tag_name==None %}
 <div class="container">
-    {% if current_user %}
+    {% if current_user.is_authenticated %}
     <form action="" method='POST' class="row justify-content-center p-1 form-inline">
         {{form.name(class="form-control form-control-sm", placeholder="Add tag")}}
         {{form.csrf_token}}
@@ -24,6 +24,11 @@
 <div class="container">
     <h3>#{{tag_name}}</h3>
     <hr>
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-10">
+            {{macro.display_pitches(pitch_list)}}
+        </div>
+    </div>
 </div>
 {% endif %}
 

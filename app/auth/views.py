@@ -3,14 +3,12 @@ from . import auth
 from .forms import LoginForm,RegisterForm
 from ..models import User
 from flask_login import login_required,login_user,logout_user,current_user
-from sqlalchemy import or_
 from app import db
 from flask_login.mixins import UserMixin
 
 @auth.route('/login',methods=['GET','POST'])
 def login():
     if current_user.is_authenticated:
-        flash('You are logged In')
         return redirect (url_for('main.index'))
 
     login_form = LoginForm()
@@ -27,6 +25,8 @@ def login():
 
 @auth.route('/register',methods=['GET','POST'])
 def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('main.index'))
     register_form = RegisterForm()
     if register_form.validate_on_submit():
         username = register_form.username.data

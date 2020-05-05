@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-10">
+            {{macro.display_pitches(pitch_list)}}
+        </div>
+    </div>
+    <h4 class="text-center">Comments</h4>
+    <div class="row justify-content-center small">
+        {%if comments%}
+        {% for comment in comments %}
+        <div class="col-md-4 col-sm-8 border-bottom">
+            <a href="/users/{{comment.user.username}}" class="font-weight-bold card-link">@{{comment.user.username}}</a>
+             <span class="font-italic">{{comment.content}}</span>
+        </div>
+        {% endfor %}
+        {% else %}
+        <h5>Post has no comments...</h5>
+        {% endif %}
+    </div>
+    {% if current_user.is_authenticated %}
+    <div class="row fixed-bottom bg-light p-2 border-top border-primary justify-content-center">
+        <form class="form-inline" method="POST">
+            <div class="form-group btn-group">
+                {{comment_form.csrf_token}}
+                {{comment_form.content(class="form-control border-primary",placeholder='Comment...')}}
+                <button class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

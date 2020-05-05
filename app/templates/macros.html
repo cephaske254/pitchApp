@@ -1,14 +1,16 @@
 {% macro display_pitches(pitches) %}
+{% for pitch in pitches %}
 <div class="card bg-default pitch-card my-2">
     <div class="card-title border-bottom">
-        <img src="{{url_for('static',filename='images/profiles/avatar.png')}}" class="avatar img-thumbnail">
-        <span class="font-weight-bold">@Cephas Too</span>
+        <a href="/users/{{pitch.user.username}}" class="font-weight-bold card-link">
+            <img src="{{url_for('static',filename='images/profiles/avatar.png')}}" class="avatar img-thumbnail">
+            @{{pitch.user.username}}</a>
         <span class="float-right small">Thu 2019</span>
     </div>
     <div class="card-body text-center">
-        <div class="card-subtitle h5">TITLE</div>
+        <div class="card-subtitle h5 text-uppercase">{{pitch.title}}</div>
         <div class="card-text text-left">
-            Content Here
+            {{pitch.content | safe}}
         </div>
     </div>
     <div class="card-footer small font-italic py-1">
@@ -21,16 +23,17 @@
                 <i class="fas fa-thumbs-down"></i>
                 <span class="badge badge-light">4</span>
             </button>
-            <button class="btn btn-sm btn-outline-primary">
+            <a href='/pitch/{{pitch.id}}' class="btn btn-sm btn-outline-primary">
                 <i class="fas fa-comment"></i>
                 <span class="badge badge-light">4</span>
-            </button>
+            </a>
         </div>
-        <div class="rounded border-bottom mt-1">
+        <div class="rounded border-bottom mt-1" hidden>
             <span class="font-weight-bold">@cephas_ke</span> This is nice...
         </div>
     </div>
 </div>
+{% endfor %}
 {% endmacro %}
 
 {% macro select_tags_options(tags)%}
