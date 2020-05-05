@@ -67,6 +67,15 @@ class Pitch(db.Model):
         pitches = Pitch.query.filter_by(id=id).all()
         return pitches
 
+    @classmethod
+    def get_user_pitches(cls,id):
+        formatted_pitches = []
+        pitches = Pitch.query.all()
+        for pitch in pitches:
+            pitch.content = markdown2.markdown(pitch.content,extras=["code-friendly", "fenced-code-blocks"])
+            formatted_pitches.append(pitch.content)
+        return pitches
+
 class Comments(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     pitch_id = db.Column(db.ForeignKey('pitches.id'))

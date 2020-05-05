@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+{% block content%}
+<div class="container">
+    <div class="row justify-content-center py-3">
+        <div class="col-md-5 card h-100">
+            <div class="profile py-2">
+                <!-- SIDEBAR USERPIC -->
+                <div class="userpic d-flex flex-column align-items-center">
+                    <img src="/static/images/profiles/avatar.png" class="card-img-top img-thumbnail" alt="">
+                </div>
+                <div class="card-body text-secondary">
+                    <div class="profile-usertitle-name h3 text-capitalize">
+                        @{{current_user.username}}
+                    </div>
+                    <div class="small font-italic">
+                        {{current_user.email}}
+                    </div>
+                </div>
+
+                <div class="btn-group my-2">
+                    <button class="btn btn-sm btn-outline-primary">Change Photo</button>
+                    <button type="button" class="btn btn-outline-success btn-sm">Back Home</button>
+                    <button type="button" class="btn btn-outline-danger btn-sm">Add Pitch</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <h3>My Pitches</h3>
+                {{macro.display_pitches(pitches)}}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,32 +1,47 @@
-@font-face{
+@font-face {
     font-family: 'BerkshireSwash-Regular';
     src: url('/static/fonts/BerkshireSwash-Regular.ttf');
 }
-.login-row{
+
+.login-row {
     min-height: 90vh;
 }
-.left-login-col{
+
+.left-login-col {
     background: url('/static/images/developer.jpg');
     background-size: cover;
     background-position: center;
 }
-.log-reg-head{
+
+.log-reg-head {
     font-family: 'BerkshireSwash-Regular';
 }
-img.avatar{
+
+img.avatar {
     width: 50px;
 }
-.pitch-card .card-body{
+
+.pitch-card .card-body {
     background-position: center;
     background-size: cover;
 }
 
-.pitch-card .card-footer{
+.pitch-card .card-footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.CodeMirror{
+.CodeMirror {
     min-height: auto !important;
+}
+
+.userpic img {
+    width: 50%;
+    height: 50%;
+}
+
+.profile-usertitle-name {
+    font-weight: 600;
+    margin-bottom: 7px;
 }

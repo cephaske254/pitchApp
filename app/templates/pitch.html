@@ -10,14 +10,16 @@
     <h4 class="text-center">Comments</h4>
     <div class="row justify-content-center small">
         {%if comments%}
-        {% for comment in comments %}
-        <div class="col-md-4 col-sm-8 border-bottom">
-            <a href="/users/{{comment.user.username}}" class="font-weight-bold card-link">@{{comment.user.username}}</a>
-             <span class="font-italic">{{comment.content}}</span>
+        <div class="col-md-4 col-sm-8">
+            {% for comment in comments %}
+            <div class="border-bottom">
+                <a href="/users/{{comment.user.username}}" class="font-weight-bold card-link">@{{comment.user.username}}</a>
+                <span class="font-italic">{{comment.content}}</span>
+            </div>
+            {% endfor %}
+            {% else %}
+            <h5>Post has no comments...</h5>
         </div>
-        {% endfor %}
-        {% else %}
-        <h5>Post has no comments...</h5>
         {% endif %}
     </div>
     {% if current_user.is_authenticated %}

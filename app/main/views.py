@@ -55,7 +55,6 @@ def new_pitch():
             flash (f'Post {title} added')
             return redirect('/new-pitch')
 
-    # flash('You must fill hte fields appropriately!')
     title = 'Add New Pitch'
     return render_template('new_pitch.html',title = title,form = form,tag_list = tag_list)
  
@@ -67,3 +66,8 @@ def pitch(id=None,filter=None):
     comments = Comments.get_comments(id)
     comment_form=CommentForm()
     return render_template('pitch.html',pitch_list=pitches,title=title,comments=comments,comment_form=comment_form)
+
+@main.route('/profile')
+def profile():
+    pitches = Pitch.get_user_pitches(current_user.id)
+    return render_template ('profile/profile.html',title=f'Profile | @{current_user.username}',pitches=pitches)
