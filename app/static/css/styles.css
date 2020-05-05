@@ -45,3 +45,6 @@ img.avatar {
     font-weight: 600;
     margin-bottom: 7px;
 }
+.hide {
+    display: none;
+}

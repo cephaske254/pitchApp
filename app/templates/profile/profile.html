@@ -7,7 +7,7 @@
             <div class="profile py-2">
                 <!-- SIDEBAR USERPIC -->
                 <div class="userpic d-flex flex-column align-items-center">
-                    <img src="/static/images/profiles/avatar.png" class="card-img-top img-thumbnail" alt="">
+                    <img src="{{url_for('static',filename='images/profiles/'+current_user.profile_pic)}}" class="card-img-top img-thumbnail" alt="">
                 </div>
                 <div class="card-body text-secondary">
                     <div class="profile-usertitle-name h3 text-capitalize">
@@ -17,9 +17,12 @@
                         {{current_user.email}}
                     </div>
                 </div>
-
+                <form method="POST" action="{{url_for('main.change_photo')}}" enctype = "multipart/form-data" class="hide form-inline image-form">
+                    <input type="file" name='photo' class="form-control form-control-sm" accept="image/*" required>
+                    <button type="submit" class="btn btn-primary btn-sm">UPLOAD</button>
+                </form>
                 <div class="btn-group my-2">
-                    <button class="btn btn-sm btn-outline-primary">Change Photo</button>
+                    <button class="btn btn-sm btn-outline-primary  image-button">Change Photo</button>
                     <button type="button" class="btn btn-outline-success btn-sm">Back Home</button>
                     <button type="button" class="btn btn-outline-danger btn-sm">Add Pitch</button>
                 </div>

@@ -1,10 +1,10 @@
-from flask import render_template,flash,redirect,url_for
+from flask import render_template,flash,redirect,url_for,request
 from . import main
 from flask_login import login_required,current_user
 # from app.functions import get_tags
 from .forms import PitchForm,TagsForm,CommentForm
-from ..models import Pitch,Tags,Comments
-from app import db
+from ..models import Pitch,Tags,Comments,User
+from app import db,photos
 import markdown2
 
 @main.route('/')
@@ -81,3 +81,14 @@ def pitch(id=None):
 def profile():
     pitches = Pitch.get_user_pitches(current_user.id)
     return render_template ('profile/profile.html',title=f'Profile | @{current_user.username}',pitches=pitches)
+
+@main.route('/profile/update_photo',methods= ['POST','PUT'])
+@login_required
+def change_photo():
+    user = User.query.filter_by(id = current_user.id).first()
+    if 'photo' in request.files:
+        filename = photos.save(request.files['photo'])
+        user.profile_pic = filename
+        print(filename)
+        db.session.commit()
+    return redirect(url_for('main.profile'))

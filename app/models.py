@@ -16,6 +16,7 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(255), index=True, unique=True)
     email = db.Column(db.String(255), index=True, unique=True)
     password_hash = db.Column(db.String())
+    profile_pic = db.Column(db.String(),default='avatar.png')
     pitches = db.relationship('Pitch', backref='user')
     comments = db.relationship('Comments', backref='user')
 
@@ -90,4 +91,4 @@ class Comments(db.Model):
 
     def __repr__(self):
         return self
-    
+

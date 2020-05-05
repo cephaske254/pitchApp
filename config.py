@@ -7,7 +7,7 @@ class Config:
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://cephas:admin121@localhost/pitch_app'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    UPLOADED_PHOTOS_DEST = 'static/images/profile'
+    UPLOADED_PHOTOS_DEST = 'app/static/images/profile'
     
     # SIMPLE MDE CONFIGURATIONS
     SIMPLEMDE_JS_IIFE =True
