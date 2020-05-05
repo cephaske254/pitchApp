@@ -1,0 +1,5 @@
+Hello {{user.username}}!,Welcome to Pitch-Advance.
+
+We have just seen you have signed up for our application and we'd like to welcome you to our community.
+You are now part of a community that connect pitch-pros with pitch-greenhorns. Find a pitch, gain. Discover things to do at certain situations, and share with the community.
+

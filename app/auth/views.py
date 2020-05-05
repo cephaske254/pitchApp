@@ -5,6 +5,7 @@ from ..models import User
 from flask_login import login_required,login_user,logout_user,current_user
 from app import db
 from flask_login.mixins import UserMixin
+from ..email import mail_message
 
 @auth.route('/login',methods=['GET','POST'])
 def login():
@@ -35,6 +36,7 @@ def register():
         user = User(username=username,password=password,email=email)
         db.session.add(user)
         db.session.commit()
+        mail_message('Welcome to Pitch-Advance!','email/welcome_user',user.email,user=user)
         return redirect(url_for('.login'))
     return render_template('auth/register.html',form=register_form, title='Sign Up')
 
