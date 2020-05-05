@@ -31,6 +31,9 @@ class User(UserMixin, db.Model):
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+    @classmethod
+    def get_user(cls,id):
+        return User.query.get(id)
     def __repr__(self):
         return f'{self}'
 
@@ -40,6 +43,7 @@ class Tags(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255))
     tag = db.Column(db.String(255))
+    pitch_names = db.relationship('Pitch', backref='pitch_object')
 
     @classmethod
     def get_tags(cls):
@@ -58,7 +62,6 @@ class Pitch(db.Model):
 
     @classmethod
     def get_pitches(cls):
-        formatted_pitches = []
         pitches = Pitch.query.all()
         for pitch in pitches:
             pitch.content = markdown2.markdown(pitch.content,extras=["code-friendly", "fenced-code-blocks"])
@@ -72,11 +75,17 @@ class Pitch(db.Model):
 
     @classmethod
     def get_user_pitches(cls,id):
-        formatted_pitches = []
         pitches = Pitch.query.filter_by(user_id=id).all()
         for pitch in pitches:
             pitch.content = markdown2.markdown(pitch.content,extras=["code-friendly", "fenced-code-blocks"])
-            formatted_pitches.append(pitch.content)
+        return pitches
+
+    @classmethod
+    def get_pitches_by_tag(cls,tag_name):
+        tag_id = Tags.query.filter_by(tag=tag_name).first()
+        pitches = Pitch.query.filter_by(tag_id=tag_id.id).all()
+        for pitch in pitches:
+            pitch.content = markdown2.markdown(pitch.content,extras=["code-friendly", "fenced-code-blocks"])
         return pitches
 
 class Comments(db.Model):

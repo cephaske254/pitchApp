@@ -7,7 +7,7 @@
             <div class="profile py-2">
                 
                 <div class="userpic d-flex flex-column align-items-center">
-                    <img src="{{url_for('static',filename='images/profiles/'+current_user.profile_pic)}}" class="card-img-top img-thumbnail" alt="">
+                    <img src="{{url_for('static',filename='images/profile/'+current_user.profile_pic)}}" class="card-img-top img-thumbnail" alt="">
                 </div>
                 <div class="card-body text-secondary">
                     <div class="profile-usertitle-name h3 text-capitalize">
@@ -23,8 +23,8 @@
                 </form>
                 <div class="btn-group my-2">
                     <button class="btn btn-sm btn-outline-primary  image-button">Change Photo</button>
-                    <button type="button" class="btn btn-outline-success btn-sm">Back Home</button>
-                    <button type="button" class="btn btn-outline-danger btn-sm">Add Pitch</button>
+                    <a href="{{url_for('main.index')}}" class="btn btn-outline-success btn-sm">Back Home</a>
+                    <a href="{{url_for('main.new_pitch')}}" class="btn btn-outline-danger btn-sm">Add Pitch</a>
                 </div>
             </div>
         </div>

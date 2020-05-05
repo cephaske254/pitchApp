@@ -4,9 +4,8 @@
 <div class="card bg-default pitch-card my-2">
     <div class="card-title border-bottom">
         <a href="/users/{{pitch.user.id}}" class="font-weight-bold card-link">
-            <img src="{{url_for('static',filename='images/profiles/'+pitch.user.profile_pic)}}" class="avatar img-thumbnail">
+            <img src="{{url_for('static',filename='images/profile/'+pitch.user.profile_pic)}}" class="avatar img-thumbnail">
             @{{pitch.user.username}}</a>
-        <span class="float-right small">Thu 2019</span>
     </div>
     <div class="card-body text-center">
         <div class="card-subtitle h5 text-uppercase">{{pitch.title}}</div>
@@ -26,6 +25,7 @@
                 <i class="fas fa-comment"></i>
             </a>
         </div>
+        <a href="{{url_for('main.tags', tag_name=pitch.pitch_object.tag)}}" class="card-link small">#{{pitch.pitch_object.tag}}</a>
     </div>
 </div>
 {% endfor %}

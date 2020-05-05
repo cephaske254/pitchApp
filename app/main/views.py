@@ -21,7 +21,7 @@ def index():
 @main.route('/tags/<tag_name>')
 def tags(tag_name=None):
     if tag_name:
-        pitches = Pitch.get_pitches()
+        pitches = Pitch.get_pitches_by_tag(tag_name)
         title = f'Tags #{tag_name}'
         return render_template('tags.html', title=title, tag_name=tag_name, pitch_list=pitches)
 
@@ -80,13 +80,16 @@ def pitch(id=None):
     return render_template('pitch.html', pitch_list=pitches, title=title, comments=comments, comment_form=comment_form)
 
 
-@main.route('/users/<id>')
+@main.route('/users/<int:id>')
 def users(id):
     pitches = Pitch.get_user_pitches(id)
+    user = User.get_user(id)
+    if current_user.is_authenticated and id == current_user.id:
+        return redirect(url_for('main.profile'))
     title = 'Profile | {}'
     for pitch in pitches:
         title = title.format(pitch.user.username)
-    return render_template('user.html', title=title, pitches=pitches)
+    return render_template('user.html', title=title, pitches=pitches,user=user)
 
 
 @main.route('/profile')

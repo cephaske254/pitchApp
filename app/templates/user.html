@@ -7,18 +7,18 @@
             <div class="profile py-2">
                 
                 <div class="userpic d-flex flex-column align-items-center">
-                    <img src="{{url_for('static',filename='images/profiles/'+current_user.profile_pic)}}" class="card-img-top img-thumbnail" alt="">
+                    <img src="{{url_for('static',filename='images/profile/'+user.profile_pic)}}" class="card-img-top img-thumbnail" alt="">
                 </div>
                 <div class="card-body text-secondary">
                     <div class="profile-usertitle-name h3 text-capitalize">
-                        @{{current_user.username}}
+                        @{{user.username}}
                     </div>
                     <div class="small font-italic">
-                        {{current_user.email}}
+                        {{user.email}}
                     </div>
                 </div>
                 <div class="btn-group my-2">
-                    <button type="button" class="btn btn-outline-success btn-sm">Back Home</button>
+                    <a href="{{url_for('main.index')}}" class="btn btn-outline-success btn-sm">Back Home</a>
                 </div>
             </div>
         </div>

@@ -9,11 +9,11 @@
                 <h1 class="text-center text-uppercase log-reg-head p-2">SIGN IN </h1>
                 <hr>
                 {{errors.flashed(get_flashed_messages())}}
-                <form  action="" method="post" role="form" class="form-horizontal">
+                <form method="post" role="form" class="form-horizontal">
                     {{ form.csrf_token }}
                     <div class="form-group">
                         {{form.username.label}}
-                        {{form.username(class='w-100 p-2',placeholder='Enter username or email...')}}
+                        {{form.username(class='w-100 p-2',placeholder='Enter username...')}}
                         {{errors.reg_errors(form.username.errors)}}
                     </div>
                     <div class="form-group">
