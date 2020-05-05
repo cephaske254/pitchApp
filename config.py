@@ -35,7 +35,7 @@ class ProdConfig(Config):
     '''
     configs for production/deployment
     '''
-    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    SQLALCHEMY_DATABASE_URI = os.environ.get("HEROKU_POSTGRESQL_RED_URL")
     DEBUG = False
 
 config_loader = {
