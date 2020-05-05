@@ -17,6 +17,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(255), index=True, unique=True)
     password_hash = db.Column(db.String())
     pitches = db.relationship('Pitch', backref='user')
+    comments = db.relationship('Comments', backref='user')
 
     @property
     def password(self):
@@ -60,17 +61,18 @@ class Pitch(db.Model):
         pitches = Pitch.query.all()
         for pitch in pitches:
             pitch.content = markdown2.markdown(pitch.content,extras=["code-friendly", "fenced-code-blocks"])
-            formatted_pitches.append(pitch.content)
         return pitches
     @classmethod
     def get_pitch(cls,id):
         pitches = Pitch.query.filter_by(id=id).all()
+        for pitch in pitches:
+            pitch.content = markdown2.markdown(pitch.content,extras=["code-friendly", "fenced-code-blocks"])
         return pitches
 
     @classmethod
     def get_user_pitches(cls,id):
         formatted_pitches = []
-        pitches = Pitch.query.all()
+        pitches = Pitch.query.filter_by(user_id=id).all()
         for pitch in pitches:
             pitch.content = markdown2.markdown(pitch.content,extras=["code-friendly", "fenced-code-blocks"])
             formatted_pitches.append(pitch.content)
@@ -84,9 +86,7 @@ class Comments(db.Model):
 
     @classmethod
     def get_comments(cls,id):
-        return Pitch.query.filter_by(user_id=id).all()
-
-
+        return Comments.query.filter_by(pitch_id=id).all()
 
     def __repr__(self):
         return self

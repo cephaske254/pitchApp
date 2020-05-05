@@ -58,16 +58,26 @@ def new_pitch():
     title = 'Add New Pitch'
     return render_template('new_pitch.html',title = title,form = form,tag_list = tag_list)
  
-@main.route('/pitch/<int:id>/<filter>',methods=['GET','POST'])
 @main.route('/pitch/<int:id>',methods=['GET','POST'])
-def pitch(id=None,filter=None):
+def pitch(id=None):
     pitches = Pitch.get_pitch(id)
-    title = f'Single Pitch - {id}'
+    for pitch in pitches:
+        title = f'Pitch {pitch.title}'
     comments = Comments.get_comments(id)
     comment_form=CommentForm()
+    if comment_form.validate_on_submit():
+        content = comment_form.content.data
+        user_id = current_user.id
+        pitch_id = id
+        comment = Comments(pitch_id=pitch_id,user_id=user_id,content=content)
+        db.session.add(comment)
+        db.session.commit()
+
+
     return render_template('pitch.html',pitch_list=pitches,title=title,comments=comments,comment_form=comment_form)
 
 @main.route('/profile')
+@login_required
 def profile():
     pitches = Pitch.get_user_pitches(current_user.id)
     return render_template ('profile/profile.html',title=f'Profile | @{current_user.username}',pitches=pitches)
