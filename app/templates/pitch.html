@@ -13,7 +13,7 @@
         <div class="col-md-4 col-sm-8">
             {% for comment in comments %}
             <div class="border-bottom">
-                <a href="/users/{{comment.user.username}}" class="font-weight-bold card-link">@{{comment.user.username}}</a>
+                <a href="/users/{{comment.user.id}}" class="font-weight-bold card-link">@{{comment.user.username}}</a>
                 <span class="font-italic">{{comment.content}}</span>
             </div>
             {% endfor %}

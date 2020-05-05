@@ -3,8 +3,8 @@
 {% for pitch in pitches %}
 <div class="card bg-default pitch-card my-2">
     <div class="card-title border-bottom">
-        <a href="/users/{{pitch.user.username}}" class="font-weight-bold card-link">
-            <img src="{{url_for('static',filename='images/profiles/avatar.png')}}" class="avatar img-thumbnail">
+        <a href="/users/{{pitch.user.id}}" class="font-weight-bold card-link">
+            <img src="{{url_for('static',filename='images/profiles/'+pitch.user.profile_pic)}}" class="avatar img-thumbnail">
             @{{pitch.user.username}}</a>
         <span class="float-right small">Thu 2019</span>
     </div>
@@ -18,11 +18,9 @@
         <div class="btn-group align-self-start">
             <button class="btn btn-sm btn-outline-success">
                 <i class="fas fa-thumbs-up"></i>
-                <span class="badge badge-light">4</span>
             </button>
             <button class="btn btn-sm btn-outline-danger">
                 <i class="fas fa-thumbs-down"></i>
-                <span class="badge badge-light">4</span>
             </button>
             <a href='{{url_for("main.pitch",id=pitch.id)}}' class="btn btn-sm btn-outline-primary">
                 <i class="fas fa-comment"></i>
@@ -45,8 +43,8 @@
 {% macro tag_cards(tag_list) %}
 {% for tag in tag_list %}
 <div class="col-lg-3 col-md-4 col-sm-6 p-2">
-    <div class="card my-1">
-        <div class="card-body">
+    <div class="card h-100 my-1">
+        <div class="card-body m-auto">
             <a href="tags/{{tag.tag}}" class="card-link">
                 <div class="card-title text-capitalize h3">
                     {{tag.name}}

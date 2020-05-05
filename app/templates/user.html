@@ -17,19 +17,13 @@
                         {{current_user.email}}
                     </div>
                 </div>
-                <form method="POST" action="{{url_for('main.change_photo')}}" enctype = "multipart/form-data" class="hide form-inline image-form">
-                    <input type="file" name='photo' class="form-control form-control-sm" accept="image/*" required>
-                    <button type="submit" class="btn btn-primary btn-sm">UPLOAD</button>
-                </form>
                 <div class="btn-group my-2">
-                    <button class="btn btn-sm btn-outline-primary  image-button">Change Photo</button>
                     <button type="button" class="btn btn-outline-success btn-sm">Back Home</button>
-                    <button type="button" class="btn btn-outline-danger btn-sm">Add Pitch</button>
                 </div>
             </div>
         </div>
         <div class="col-md-7">
-            <h3>My Pitches</h3>
+            <h3>User Pitches</h3>
                 {{macro.display_pitches(pitches)}}
         </div>
     </div>
