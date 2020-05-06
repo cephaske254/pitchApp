@@ -6,7 +6,7 @@
 <div class="container">
     {% if current_user.is_authenticated %}
     <form action="" method='POST' class="row justify-content-center p-1 form-inline">
-        {{form.name(class="form-control form-control-sm", placeholder="Add tag")}}
+        {{form.name(class="form-control form-control-sm", placeholder="Add tag",required='true')}}
         {{form.csrf_token}}
         <button class="btn mx-1 btn-sm btn-outline-primary add-tag-btn">Add
             <i class="fas fa-plus-circle"></i>
