@@ -36,6 +36,8 @@ def register():
         user = User(username=username,password=password,email=email)
         db.session.add(user)
         db.session.commit()
+        return redirect (url_for('auth.login'))
+        
     return render_template('auth/register.html',form=register_form, title='Sign Up')
 
 @auth.route('/logout')
