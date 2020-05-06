@@ -30,14 +30,14 @@
 </div>
 {% endfor %}
 {% else %}
-<h4 class="font-italic text-secondary text-center">No pitches found</h4>
+    <h4 class="font-italic text-secondary text-center">No pitches found</h4>
 {% endif %}
 {% endmacro %}
 
 {% macro select_tags_options(tags)%}
-{% for tag in tags %}
-<option value="{{tag.id}}">{{tag.name}}</option>
-{% endfor %}
+    {% for tag in tags %}
+    <option value="{{tag.id}}">{{tag.name}}</option>
+    {% endfor %}
 {% endmacro %}
 
 {% macro tag_cards(tag_list) %}
