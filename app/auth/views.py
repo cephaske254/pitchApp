@@ -36,8 +36,9 @@ def register():
         user = User(username=username,password=password,email=email)
         db.session.add(user)
         db.session.commit()
+        mail_message('Welcome To Pitch-Advance!','email/welcome_user',user.email,user=user)
         return redirect (url_for('auth.login'))
-        
+
     return render_template('auth/register.html',form=register_form, title='Sign Up')
 
 @auth.route('/logout')
