@@ -36,7 +36,7 @@ def register():
         user = User(username=username,password=password,email=email)
         db.session.add(user)
         db.session.commit()
-        mail_message('Welcome to Pitch-Advance!','email/welcome_user',user.email,user=user)
+        # mail_message('Welcome to Pitch-Advance!','email/welcome_user',user.email,user=user)
         return redirect(url_for('.login'))
     return render_template('auth/register.html',form=register_form, title='Sign Up')
 
